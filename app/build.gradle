@@ -1,0 +1,39 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdk 32
+    defaultConfig {
+        applicationId "com.xiaopo.flying.photolayout"
+        minSdk 21
+        targetSdk 28
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    implementation 'com.flying.xiaopo:poiphoto:0.4.2'
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'junit:junit:4.12'
+    implementation project(path: ':puzzle')
+
+}
